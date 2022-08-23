@@ -19,7 +19,7 @@ const LogoBox = styled.span`
 
 const Logo = () =>
 {
-    const cakePrintImg = '/images/cake'
+    const cakePrintImg = '/images/cake.svg'
     return (
         <Link href={"/"}>
             <a>
@@ -35,3 +35,5 @@ const Logo = () =>
 
     )
 }
+
+export default Logo
