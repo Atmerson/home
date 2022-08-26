@@ -1,6 +1,6 @@
 import Logo from './logo'
 import NextLink from 'next/link'
-import{
+import {
     Container,
     Box,
     Link,
@@ -13,18 +13,21 @@ import{
     MenuButton,
     IconButton,
     useColorModeValue
-} from "@chakra-ui/react";
+} from '@chakra-ui/react'
 import { HamburgerIcon } from '@chakra-ui/icons'
+// import ThemeToggleButton from './theme-toggle-button'
+// import { IoLogoGithub } from 'react-icons/io5'
 
-const LinkItem = ({href, path, children,...props} : any) => {
+const LinkItem = ({ href, path, target, children, ...props } : any) => {
     const active = path === href
-    const inactiveColor = useColorModeValue('gray200', 'whiteAsh')
-    return(
-        <NextLink href={href}>
+    const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+    return (
+        <NextLink href={href} passHref scroll={false}>
             <Link
                 p={2}
-                bg={active ? 'glassTeal' : undefined}
+                bg={active ? 'grassTeal' : undefined}
                 color={active ? '#202023' : inactiveColor}
+                target={target}
                 {...props}
             >
                 {children}
@@ -33,9 +36,10 @@ const LinkItem = ({href, path, children,...props} : any) => {
     )
 }
 
-const Navbar = ({path, props} : any) => {
+const Navbar = props => {
+    const { path } = props
 
-    return(
+    return (
         <Box
             position="fixed"
             as="nav"
@@ -43,7 +47,7 @@ const Navbar = ({path, props} : any) => {
             bg={useColorModeValue('#ffffff40', '#20202380')}
             css={{ backdropFilter: 'blur(10px)' }}
             zIndex={2}
-            {...path}
+            {...props}
         >
             <Container
                 display="flex"
@@ -87,11 +91,13 @@ const Navbar = ({path, props} : any) => {
                 </Stack>
 
                 <Box flex={1} align="right">
+
+
                     <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
                         <Menu isLazy id="navbar-menu">
                             <MenuButton
                                 as={IconButton}
-                                icon={<HamburgerIcon></HamburgerIcon>}
+                                icon={<HamburgerIcon />}
                                 variant="outline"
                                 aria-label="Options"
                             />
@@ -107,7 +113,7 @@ const Navbar = ({path, props} : any) => {
                                 </NextLink>
                                 <MenuItem
                                     as={Link}
-                                    href="https://github.com/craftzdog/craftzdog-homepage"
+                                    href="https://github.com/Atmerson/home"
                                 >
                                     View Source
                                 </MenuItem>
